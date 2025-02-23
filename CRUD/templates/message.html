@@ -1,0 +1,25 @@
+{% extends "main.html" %}
+
+{% block crud_container %}
+    {% if message %}
+    <article class="card container-fluid">
+        <br/>
+        <h2>ID: {{ message.id }}</h2>
+        <p>
+            <strong>Text: {{ message.text }}</strong>
+        </p>
+    </article>
+    {% else %}
+    <section class="container-fluid">
+        <h2 align="center">Messages</h2>
+        <br>
+        <div class="card">
+            <ul class="list-group list-group-flush">
+                {% for message in messages %}
+                <li class="list-group-item">{{ message.id }}. <a href="/message/{{message.id}}">{{ message.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    {% endif %}
+{% endblock %}
